@@ -110,7 +110,7 @@
    public <init> (org.json.JSONObject);
 }
 
--keep public class com.kaku.weac.R$*{
+-keep public class com.kaku.alarm.R$*{
 public static final int *;
 }
 

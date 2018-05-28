@@ -20,7 +20,7 @@
     <string name="repeat">Repeat</string>
     <string name="tag">Name</string>
     <string name="ring">Sound</string>
-    <string name="default_ring">默认铃声</string>
+    <string name="default_ring">Default</string>
     <string name="volume">音量</string>
     <string name="vibrate">Vibrate</string>
     <string name="nap">Snooze time</string>
@@ -127,7 +127,7 @@
     <string name="select_all">全选</string>
     <string name="select_all_cancel">取消全选</string>
     <!-- 音频播放 -->
-    <string name="play_fail">播放失败</string>
+    <string name="play_fail">Play fail</string>
 
     <!-- 天气 -->
     <string name="loading">正在加载…</string>

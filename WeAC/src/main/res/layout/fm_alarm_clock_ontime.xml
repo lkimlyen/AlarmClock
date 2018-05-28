@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary">
 
-    <com.kaku.weac.view.MySlidingView
+    <com.kaku.alarm.view.MySlidingView
         android:id="@+id/my_sliding_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -31,36 +31,38 @@
             android:layout_height="match_parent"
             android:id="@+id/content"
             app:rb_color="@android:color/white"
-            app:rb_radius="32dp"
-            app:rb_rippleAmount="4"
-            app:rb_duration="3000"
+            app:rb_radius="50dp"
+            app:rb_rippleAmount="5"
+            app:rb_duration="5000"
             app:rb_scale="6">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
+                android:gravity="center"
                 android:orientation="vertical">
             <TextView
-                android:id="@+id/ontime_tag"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:id="@+id/ontime_nap"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:gravity="center"
                 android:lines="2"
                 android:text="SNOOZE!"
-                android:textColor="@android:color/black"
+                android:background="@drawable/shape_circle_white"
+                android:textColor="@color/colorPrimary"
                 android:textSize="40sp"
                 android:textStyle="bold"/>
 
             <TextView
-                android:id="@+id/ontime_nap"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:paddingBottom="13dp"
+                android:visibility="gone"
                 android:paddingTop="13dp"
                 android:textColor="@android:color/black"
                 android:textSize="22sp" />
@@ -82,5 +84,5 @@
             android:textSize="20sp" />
 
 
-    </com.kaku.weac.view.MySlidingView>
+    </com.kaku.alarm.view.MySlidingView>
 </FrameLayout>

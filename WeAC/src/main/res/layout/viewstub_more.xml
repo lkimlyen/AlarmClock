@@ -113,7 +113,7 @@
             <LinearLayout
                 style="@style/more_item_group">
 
-                <com.kaku.weac.view.CircleProgress
+                <com.kaku.alarm.view.CircleProgress
                     android:id="@+id/circle_progress"
                     android:layout_width="37dp"
                     android:layout_height="37dp"

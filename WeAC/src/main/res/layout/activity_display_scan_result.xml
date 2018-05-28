@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.kaku.weac.activities.DisplayScanResultActivity">
+    tools:context=" com.kaku.alarm.activities.DisplayScanResultActivity">
 
     <RelativeLayout
         style="@style/action_llyt"
