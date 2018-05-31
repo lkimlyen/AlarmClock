@@ -33,7 +33,7 @@ public class AlarmClockNapNotificationActivity extends BaseActivitySimple {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        AlarmClock alarmClock = getIntent().getParcelableExtra(
+        AlarmClock alarmClock = getIntent().getBundleExtra("bundlene").getParcelable(
                 WeacConstants.ALARM_CLOCK);
         // 关闭小睡
         MyUtil.cancelAlarmClock(this, -alarmClock.getId());

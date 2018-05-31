@@ -45,6 +45,7 @@ import android.widget.TextView;
 import com.kaku.alarm.R;
 import com.kaku.alarm.activities.AlarmClockOntimeActivity;
 import com.kaku.alarm.activities.AlarmClockSnoozeActivity;
+import com.kaku.alarm.activities.SplashActivity;
 import com.kaku.alarm.bean.AlarmClock;
 import com.kaku.alarm.broadcast.AlarmClockBroadcast;
 import com.kaku.alarm.common.WeacConstants;
@@ -134,7 +135,7 @@ public class AlarmClockOntimeFragment extends BaseFragment implements
                         | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         mAlarmClock = getActivity().getIntent()
-                .getParcelableExtra(WeacConstants.ALARM_CLOCK);
+                .getBundleExtra("bundlene").getParcelable(WeacConstants.ALARM_CLOCK);
         alarmClock = mAlarmClock;
         if (mAlarmClock != null) {
             mNapInterval = mAlarmClock.getNapInterval();
@@ -193,11 +194,19 @@ public class AlarmClockOntimeFragment extends BaseFragment implements
                 MyUtil.cancelAlarmClock(getContext(),
                         mAlarmClock.getId());
                 MyUtil.cancelAlarmClock(getContext(),
-                        mAlarmClock.getId());
+                        -mAlarmClock.getId());
 
                 NotificationManager notificationManager = (NotificationManager) getContext()
                         .getSystemService(Activity.NOTIFICATION_SERVICE);
                 notificationManager.cancel(mAlarmClock.getId());
+
+                Intent i1 = new Intent(getActivity(), SplashActivity.class);
+                i1.setAction(Intent.ACTION_MAIN);
+                i1.addCategory(Intent.CATEGORY_HOME);
+                i1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                i1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                i1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(i1);
                 finishActivity();
             }
         });
@@ -277,7 +286,11 @@ public class AlarmClockOntimeFragment extends BaseFragment implements
         }
         mNapTimesRan++;
         Intent intent = new Intent(getActivity(), AlarmClockBroadcast.class);
-        intent.putExtra(WeacConstants.ALARM_CLOCK, mAlarmClock);
+
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(WeacConstants.ALARM_CLOCK, mAlarmClock);
+        intent.putExtra("bundlene", bundle);
+
         intent.putExtra(WeacConstants.NAP_RAN_TIMES, mNapTimesRan);
         PendingIntent pi = PendingIntent.getBroadcast(getActivity(),
                 -mAlarmClock.getId(), intent,
@@ -294,31 +307,34 @@ public class AlarmClockOntimeFragment extends BaseFragment implements
 
         Intent it = new Intent(getActivity(),
                 AlarmClockOntimeActivity.class);
-        it.putExtra(WeacConstants.ALARM_CLOCK, mAlarmClock);
+        Bundle bundleNe = new Bundle();
+        bundleNe.putParcelable(WeacConstants.ALARM_CLOCK, alarmClock);
+        it.putExtra("bundlene", bundleNe);
+
         PendingIntent napCancel = PendingIntent.getActivity(getActivity(),
                 mAlarmClock.getId(), it,
                 PendingIntent.FLAG_CANCEL_CURRENT);
         CharSequence time = new SimpleDateFormat("HH:mm", Locale.getDefault())
                 .format(nextTime);
 
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(getActivity());
-        Notification notification = builder.setContentIntent(napCancel)
-                .setDeleteIntent(napCancel)
-                .setContentTitle(
-                        String.format(getString(R.string.xx_naping),
-                                mAlarmClock.getTag()))
-                .setContentText(String.format(getString(R.string.nap_to), time))
-                .setTicker(
-                        String.format(getString(R.string.nap_time),
-                                mNapInterval))
-                .setSmallIcon(R.drawable.ic_nap_notification)
-                .setLargeIcon(
-                        BitmapFactory.decodeResource(getResources(),
-                                R.drawable.ic_launcher)).setAutoCancel(true)
-                // é»˜è®¤å‘¼å¸ç¯
-                .setDefaults(NotificationCompat.DEFAULT_LIGHTS | NotificationCompat.FLAG_SHOW_LIGHTS)
-                .build();
-        mNotificationManager.notify(mAlarmClock.getId(), notification);
+//        NotificationCompat.Builder builder = new NotificationCompat.Builder(getActivity());
+//        Notification notification = builder.setContentIntent(napCancel)
+//                .setDeleteIntent(napCancel)
+//                .setContentTitle(
+//                        String.format(getString(R.string.xx_naping),
+//                                mAlarmClock.getTag()))
+//                .setContentText(String.format(getString(R.string.nap_to), time))
+//                .setTicker(
+//                        String.format(getString(R.string.nap_time),
+//                                mNapInterval))
+//                .setSmallIcon(R.drawable.ic_nap_notification)
+//                .setLargeIcon(
+//                        BitmapFactory.decodeResource(getResources(),
+//                                R.drawable.ic_launcher)).setAutoCancel(true)
+//                // é»˜è®¤å‘¼å¸ç¯
+//                .setDefaults(NotificationCompat.DEFAULT_LIGHTS | NotificationCompat.FLAG_SHOW_LIGHTS)
+//                .build();
+//        mNotificationManager.notify(mAlarmClock.getId(), notification);
     }
 
     private void playRing() {

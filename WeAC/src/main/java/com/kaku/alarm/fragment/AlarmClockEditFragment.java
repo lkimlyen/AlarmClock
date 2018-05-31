@@ -143,7 +143,7 @@ public class AlarmClockEditFragment extends BaseFragment implements
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mAlarmClock = getActivity().getIntent().getParcelableExtra(
+        mAlarmClock = getActivity().getIntent().getBundleExtra("bundlene").getParcelable(
                 WeacConstants.ALARM_CLOCK);
         // 闹钟默认开启
         mAlarmClock.setOnOff(true);
@@ -360,7 +360,9 @@ public class AlarmClockEditFragment extends BaseFragment implements
                 saveDefaultAlarmTime();
 
                 Intent data = new Intent();
-                data.putExtra(WeacConstants.ALARM_CLOCK, mAlarmClock);
+                Bundle bundle = new Bundle();
+                bundle.putParcelable(WeacConstants.ALARM_CLOCK, mAlarmClock);
+                data.putExtra("bundlene", bundle);
                 getActivity().setResult(Activity.RESULT_OK, data);
                 drawAnimation();
                 displayCountDown();

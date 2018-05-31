@@ -46,12 +46,11 @@ public class SplashActivity extends BaseActivity {
         }
 
 
-        overridePendingTransition(R.anim.zoomin, 0);
         // 禁止滑动后退
         setSwipeBackEnable(false);
         setContentView(R.layout.activity_splash);
 
-        CountDownTimer countDownTimer = new CountDownTimer(3000, 1000) {
+        CountDownTimer countDownTimer = new CountDownTimer(000, 1000) {
             @Override
             public void onTick(long l) {
 
