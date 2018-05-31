@@ -340,8 +340,10 @@ public class AlarmClockOntimeFragment extends BaseFragment implements
     private void playRing() {
         mAudioManager = (AudioManager) getActivity().getSystemService(
                 Context.AUDIO_SERVICE);
+
         mCurrentVolume = mAudioManager
                 .getStreamVolume(AudioManager.STREAM_MUSIC);
+
         if (mAlarmClock != null) {
             mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC,
                     mAlarmClock.getVolume(), AudioManager.ADJUST_SAME);
