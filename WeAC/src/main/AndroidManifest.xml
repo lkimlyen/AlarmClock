@@ -51,7 +51,7 @@
             android:name=".activities.AlarmClockOntimeActivity"
             android:screenOrientation="portrait"
             android:launchMode="singleTop"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity
             android:name=".activities.AlarmClockNapNotificationActivity"
             android:theme="@android:style/Theme.NoDisplay"/>
@@ -78,7 +78,7 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
         <activity
             android:name=".activities.AlarmClockSnoozeActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
 
         <receiver
             android:name=".broadcast.AlarmClockBroadcast"
