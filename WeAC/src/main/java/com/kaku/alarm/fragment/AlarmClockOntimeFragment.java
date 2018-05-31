@@ -317,24 +317,24 @@ public class AlarmClockOntimeFragment extends BaseFragment implements
         CharSequence time = new SimpleDateFormat("HH:mm", Locale.getDefault())
                 .format(nextTime);
 
-//        NotificationCompat.Builder builder = new NotificationCompat.Builder(getActivity());
-//        Notification notification = builder.setContentIntent(napCancel)
-//                .setDeleteIntent(napCancel)
-//                .setContentTitle(
-//                        String.format(getString(R.string.xx_naping),
-//                                mAlarmClock.getTag()))
-//                .setContentText(String.format(getString(R.string.nap_to), time))
-//                .setTicker(
-//                        String.format(getString(R.string.nap_time),
-//                                mNapInterval))
-//                .setSmallIcon(R.drawable.ic_nap_notification)
-//                .setLargeIcon(
-//                        BitmapFactory.decodeResource(getResources(),
-//                                R.drawable.ic_launcher)).setAutoCancel(true)
-//                // é»˜è®¤å‘¼å¸ç¯
-//                .setDefaults(NotificationCompat.DEFAULT_LIGHTS | NotificationCompat.FLAG_SHOW_LIGHTS)
-//                .build();
-//        mNotificationManager.notify(mAlarmClock.getId(), notification);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getActivity());
+        Notification notification = builder.setContentIntent(napCancel)
+                .setDeleteIntent(napCancel)
+                .setContentTitle(
+                        String.format(getString(R.string.xx_naping),
+                                mAlarmClock.getTag()))
+                .setContentText(String.format(getString(R.string.nap_to), time))
+                .setTicker(
+                        String.format(getString(R.string.nap_time),
+                                mNapInterval))
+                .setSmallIcon(R.drawable.ic_nap_notification)
+                .setLargeIcon(
+                        BitmapFactory.decodeResource(getResources(),
+                                R.drawable.ic_launcher)).setAutoCancel(true)
+                // é»˜è®¤å‘¼å¸ç¯
+                .setDefaults(NotificationCompat.DEFAULT_LIGHTS | NotificationCompat.FLAG_SHOW_LIGHTS)
+                .build();
+        mNotificationManager.notify(mAlarmClock.getId(), notification);
     }
 
     private void playRing() {
