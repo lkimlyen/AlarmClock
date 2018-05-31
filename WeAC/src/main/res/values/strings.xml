@@ -25,9 +25,9 @@
     <string name="vibrate">Vibrate</string>
     <string name="nap">Snooze time</string>
     <string name="wea_prompt">天气提示</string>
-    <string name="countdown_day_hour_minute" formatted="false">%d days from %d hours %d minutes from alarm clock</string>
-    <string name="countdown_hour_minute" formatted="false">%d hours %d minutes from alarm clock</string>
-    <string name="countdown_minute" formatted="false">%d minutes from alarm clock</string>
+    <string name="countdown_day_hour_minute" formatted="false">Alarm set for %1$d %2$s %3$d %4$s %5$d %6$s from now</string>
+    <string name="countdown_hour_minute" formatted="false">Alarm set for %1$d %2$s %3$d %4$s from now</string>
+    <string name="countdown_minute" formatted="false">Alarm set for %1$d %2$s from now</string>
     <string name="monday">M</string>
     <string name="tuesday">T</string>
     <string name="wednesday">W</string>

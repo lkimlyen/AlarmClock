@@ -16,8 +16,12 @@
  */
 package com.kaku.alarm.activities;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.view.Window;
 
+import com.kaku.alarm.R;
 import com.kaku.alarm.fragment.AlarmClockOntimeFragment;
 
 /**
@@ -26,11 +30,28 @@ import com.kaku.alarm.fragment.AlarmClockOntimeFragment;
  * @author 咖枯
  * @version 1.0 2015/06
  */
-public class AlarmClockOntimeActivity extends SingleFragmentDialogActivity {
-
+public class AlarmClockOntimeActivity extends BaseActivity {
+    AlarmClockOntimeFragment fragment;
     @Override
-    protected Fragment createFragment() {
-        return new AlarmClockOntimeFragment();
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fm_activity);
+
+        initFragment();
+    }
+    private void initFragment() {
+        fragment = (AlarmClockOntimeFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_containers);
+        if (fragment == null) {
+            fragment = AlarmClockOntimeFragment.newInstance();
+            addFragmentToBackStack(fragment, R.id.fragment_containers);
+        }
+    }
+
+    private void addFragmentToBackStack(AlarmClockOntimeFragment fragment, int frameId) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(frameId, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 
     @Override

@@ -43,14 +43,13 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.kaku.alarm.R;
-import com.kaku.alarm.activities.AlarmClockNapNotificationActivity;
+import com.kaku.alarm.activities.AlarmClockOntimeActivity;
 import com.kaku.alarm.activities.AlarmClockSnoozeActivity;
 import com.kaku.alarm.bean.AlarmClock;
 import com.kaku.alarm.broadcast.AlarmClockBroadcast;
 import com.kaku.alarm.common.WeacConstants;
 import com.kaku.alarm.common.WeacStatus;
 import com.kaku.alarm.util.AudioPlayer;
-import com.kaku.alarm.util.LogUtil;
 import com.kaku.alarm.util.MyUtil;
 import com.kaku.alarm.view.MySlidingView;
 import com.skyfishjy.library.RippleBackground;
@@ -89,6 +88,16 @@ public class AlarmClockOntimeFragment extends BaseFragment implements
     private AlarmClock alarmClock;
 
     private String mCurrentTimeDisplay = "";
+
+    public AlarmClockOntimeFragment() {
+        // Required empty public constructor
+    }
+
+
+    public static AlarmClockOntimeFragment newInstance() {
+        AlarmClockOntimeFragment fragment = new AlarmClockOntimeFragment();
+        return fragment;
+    }
 
     static class ShowTimeHandler extends Handler {
         private WeakReference<AlarmClockOntimeFragment> mWeakReference;
@@ -220,6 +229,10 @@ public class AlarmClockOntimeFragment extends BaseFragment implements
 
         if (!mIsOnclick) {
             nap();
+            Intent intent1 = new Intent(getContext(), AlarmClockSnoozeActivity.class);
+            intent1.putExtra(WeacConstants.NAP_INTERVAL, alarmClock.getNapInterval());
+            intent1.putExtra(WeacConstants.CLOCK_ID, alarmClock.getId());
+            getActivity().startActivity(intent1);
         }
         if (WeacStatus.sActivityNumber <= 1) {
             AudioPlayer.getInstance(getActivity()).stop();
@@ -246,9 +259,7 @@ public class AlarmClockOntimeFragment extends BaseFragment implements
     }
 
     private void finishActivity() {
-
         getActivity().finish();
-        getActivity().overridePendingTransition(0, 0);
     }
 
     private void onClickNapButton() {
@@ -282,7 +293,7 @@ public class AlarmClockOntimeFragment extends BaseFragment implements
         }
 
         Intent it = new Intent(getActivity(),
-                AlarmClockNapNotificationActivity.class);
+                AlarmClockOntimeActivity.class);
         it.putExtra(WeacConstants.ALARM_CLOCK, mAlarmClock);
         PendingIntent napCancel = PendingIntent.getActivity(getActivity(),
                 mAlarmClock.getId(), it,
@@ -308,10 +319,6 @@ public class AlarmClockOntimeFragment extends BaseFragment implements
                 .setDefaults(NotificationCompat.DEFAULT_LIGHTS | NotificationCompat.FLAG_SHOW_LIGHTS)
                 .build();
         mNotificationManager.notify(mAlarmClock.getId(), notification);
-        Intent intent1 = new Intent(getContext(), AlarmClockSnoozeActivity.class);
-        intent1.putExtra(WeacConstants.NAP_INTERVAL, alarmClock.getNapInterval());
-        intent1.putExtra(WeacConstants.CLOCK_ID, alarmClock.getId());
-        getContext().startActivity(intent1);
     }
 
     private void playRing() {
@@ -358,7 +365,6 @@ public class AlarmClockOntimeFragment extends BaseFragment implements
 
     private class TimeUpdateThread implements Runnable {
         private int startedTime = 0;
-
 
         private static final int TIME = 60 * 3;
 

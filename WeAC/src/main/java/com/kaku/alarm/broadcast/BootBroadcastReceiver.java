@@ -40,7 +40,5 @@ public class BootBroadcastReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         LogUtil.d(LOG_TAG, "onReceive ");
         context.startService(new Intent(context, DaemonService.class));
-
     }
-
 }

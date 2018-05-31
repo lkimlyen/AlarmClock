@@ -19,6 +19,7 @@ package com.kaku.alarm.activities;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 
 import com.kaku.alarm.R;
 
@@ -45,10 +46,15 @@ public abstract class SingleFragmentDialogActivity extends BaseActivitySimple {
         Fragment fragment = fm.findFragmentById(R.id.fragment_containers);
         if (fragment == null) {
             fragment = createFragment();
-            fm.beginTransaction().add(R.id.fragment_containers, fragment)
-                    .commit();
-
+            addFragmentToBackStack(fragment,R.id.fragment_containers);
         }
 
+    }
+
+    private void addFragmentToBackStack(Fragment fragment, int frameId) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(frameId, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 }

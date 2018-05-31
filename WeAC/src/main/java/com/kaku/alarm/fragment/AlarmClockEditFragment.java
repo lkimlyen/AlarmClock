@@ -42,6 +42,7 @@ import com.kaku.alarm.bean.AlarmClock;
 import com.kaku.alarm.common.WeacConstants;
 import com.kaku.alarm.util.LogUtil;
 import com.kaku.alarm.util.MyUtil;
+import com.kaku.alarm.util.ToastUtil;
 
 import java.util.Collection;
 import java.util.TreeMap;
@@ -196,9 +197,7 @@ public class AlarmClockEditFragment extends BaseFragment implements
     private void initTimeSelect(View view) {
         // 下次响铃提示
         mTimePickerTv = (TextView) view.findViewById(R.id.time_picker_tv);
-        // 计算倒计时显示
-        displayCountDown();
-        // 闹钟时间选择器
+
         TimePicker timePicker = (TimePicker) view.findViewById(R.id.time_picker);
         timePicker.setIs24HourView(true);
         // 初始化时间选择器的小时
@@ -212,12 +211,8 @@ public class AlarmClockEditFragment extends BaseFragment implements
 
             @Override
             public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
-                // 保存闹钟实例的小时
                 mAlarmClock.setHour(hourOfDay);
-                // 保存闹钟实例的分钟
                 mAlarmClock.setMinute(minute);
-                // 计算倒计时显示
-                displayCountDown();
             }
 
         });
@@ -368,6 +363,7 @@ public class AlarmClockEditFragment extends BaseFragment implements
                 data.putExtra(WeacConstants.ALARM_CLOCK, mAlarmClock);
                 getActivity().setResult(Activity.RESULT_OK, data);
                 drawAnimation();
+                displayCountDown();
                 break;
 
             // 当点击铃声
@@ -458,12 +454,12 @@ public class AlarmClockEditFragment extends BaseFragment implements
                     isMondayChecked = true;
                     mMap.put(1, getString(R.string.one_h));
                     setRepeatDescribe();
-                    displayCountDown();
+
                 } else {
                     isMondayChecked = false;
                     mMap.remove(1);
                     setRepeatDescribe();
-                    displayCountDown();
+
                 }
                 break;
             // 选中周二
@@ -472,12 +468,12 @@ public class AlarmClockEditFragment extends BaseFragment implements
                     isTuesdayChecked = true;
                     mMap.put(2, getString(R.string.two_h));
                     setRepeatDescribe();
-                    displayCountDown();
+
                 } else {
                     isTuesdayChecked = false;
                     mMap.remove(2);
                     setRepeatDescribe();
-                    displayCountDown();
+
                 }
                 break;
             // 选中周三
@@ -486,12 +482,12 @@ public class AlarmClockEditFragment extends BaseFragment implements
                     isWednesdayChecked = true;
                     mMap.put(3, getString(R.string.three_h));
                     setRepeatDescribe();
-                    displayCountDown();
+
                 } else {
                     isWednesdayChecked = false;
                     mMap.remove(3);
                     setRepeatDescribe();
-                    displayCountDown();
+
                 }
                 break;
             // 选中周四
@@ -500,12 +496,12 @@ public class AlarmClockEditFragment extends BaseFragment implements
                     isThursdayChecked = true;
                     mMap.put(4, getString(R.string.four_h));
                     setRepeatDescribe();
-                    displayCountDown();
+
                 } else {
                     isThursdayChecked = false;
                     mMap.remove(4);
                     setRepeatDescribe();
-                    displayCountDown();
+
                 }
                 break;
             // 选中周五
@@ -514,12 +510,12 @@ public class AlarmClockEditFragment extends BaseFragment implements
                     isFridayChecked = true;
                     mMap.put(5, getString(R.string.five_h));
                     setRepeatDescribe();
-                    displayCountDown();
+
                 } else {
                     isFridayChecked = false;
                     mMap.remove(5);
                     setRepeatDescribe();
-                    displayCountDown();
+
                 }
                 break;
             // 选中周六
@@ -528,12 +524,12 @@ public class AlarmClockEditFragment extends BaseFragment implements
                     isSaturdayChecked = true;
                     mMap.put(6, getString(R.string.six_h));
                     setRepeatDescribe();
-                    displayCountDown();
+
                 } else {
                     isSaturdayChecked = false;
                     mMap.remove(6);
                     setRepeatDescribe();
-                    displayCountDown();
+
                 }
                 break;
             // 选中周日
@@ -542,12 +538,12 @@ public class AlarmClockEditFragment extends BaseFragment implements
                     isSundayChecked = true;
                     mMap.put(7, getString(R.string.day));
                     setRepeatDescribe();
-                    displayCountDown();
+
                 } else {
                     isSundayChecked = false;
                     mMap.remove(7);
                     setRepeatDescribe();
-                    displayCountDown();
+
                 }
                 break;
             // 振动
@@ -674,23 +670,33 @@ public class AlarmClockEditFragment extends BaseFragment implements
         // 当剩余天数大于0时显示【X天X小时X分】格式
         if (remainDay > 0) {
             countDown = getString(R.string.countdown_day_hour_minute);
-            mTimePickerTv.setText(String.format(countDown, remainDay,
-                    remainHour, remainMinute));
             // 当剩余小时大于0时显示【X小时X分】格式
+            String day = remainDay > 1 ? "days" : "day";
+            String hour = remainHour > 1 ? "hours" : "hour";
+            String minute = remainMinute >1 ? "minutes" : "minute";
+            ToastUtil.showLongToast(getContext(), String.format(countDown, remainDay,day,
+                    remainHour,hour, remainMinute, minute));
         } else if (remainHour > 0) {
             countDown = getResources()
                     .getString(R.string.countdown_hour_minute);
-            mTimePickerTv.setText(String.format(countDown, remainHour,
-                    remainMinute));
+
+            String hour = remainHour > 1 ? "hours" : "hour";
+            String minute = remainMinute >1 ? "minutes" : "minute";
+            ToastUtil.showLongToast(getContext(), String.format(countDown, remainHour,hour,
+                    remainMinute, minute));
         } else {
             // 当剩余分钟不等于0时显示【X分钟】格式
             if (remainMinute != 0) {
                 countDown = getString(R.string.countdown_minute);
-                mTimePickerTv.setText(String.format(countDown, remainMinute));
+                String minute = remainMinute >1 ? "minutes" : "minute";
+                ToastUtil.showLongToast(getContext(), String.format(countDown, remainMinute, minute));
                 // 当剩余分钟等于0时，显示【1天0小时0分】
             } else {
                 countDown = getString(R.string.countdown_day_hour_minute);
-                mTimePickerTv.setText(String.format(countDown, 1, 0, 0));
+                String day ="day";
+                String hour = "hour";
+                String minute = "minute";
+                ToastUtil.showLongToast(getContext(), String.format(countDown, 1,day, 0,hour, 0, minute));
             }
 
         }

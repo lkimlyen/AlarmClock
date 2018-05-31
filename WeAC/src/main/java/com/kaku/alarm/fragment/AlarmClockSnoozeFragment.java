@@ -42,7 +42,11 @@ public class AlarmClockSnoozeFragment extends com.kaku.alarm.fragment.BaseFragme
     private int mRecordPromptCount = 0;
     private int clockId;
     int count = 0;
-
+    private MyCountDownTimer myCountDownTimer;
+    public static AlarmClockSnoozeFragment newInstance() {
+        AlarmClockSnoozeFragment fragment = new AlarmClockSnoozeFragment();
+        return fragment;
+    }
     @Override
     public void onClick(View v) {
 
@@ -99,7 +103,7 @@ public class AlarmClockSnoozeFragment extends com.kaku.alarm.fragment.BaseFragme
             }
         });
         progressBar.setProgress(100);
-        MyCountDownTimer myCountDownTimer = new MyCountDownTimer(mNapInterval * 60 * 1000, 1000);
+        myCountDownTimer = new MyCountDownTimer(mNapInterval * 60 * 1000, 1000);
         myCountDownTimer.start();
         TextView slidingTipIv = (TextView) view.findViewById(R.id.sliding_tip_tv);
         final AnimationDrawable animationDrawable = (AnimationDrawable) slidingTipIv.getCompoundDrawables()[0];
@@ -124,6 +128,8 @@ public class AlarmClockSnoozeFragment extends com.kaku.alarm.fragment.BaseFragme
     @Override
     public void onStop() {
         super.onStop();
+        myCountDownTimer.cancel();
+        mChronometer.stop();
     }
 
     @Override
@@ -139,7 +145,6 @@ public class AlarmClockSnoozeFragment extends com.kaku.alarm.fragment.BaseFragme
     @Override
     public void onDestroy() {
         super.onDestroy();
-
     }
 
     private void finishActivity() {
@@ -152,7 +157,6 @@ public class AlarmClockSnoozeFragment extends com.kaku.alarm.fragment.BaseFragme
                 .getSystemService(Activity.NOTIFICATION_SERVICE);
         notificationManager.cancel(clockId);
         getActivity().finish();
-        getActivity().overridePendingTransition(0, 0);
     }
 
     public class MyCountDownTimer extends CountDownTimer {
@@ -172,9 +176,7 @@ public class AlarmClockSnoozeFragment extends com.kaku.alarm.fragment.BaseFragme
         @Override
         public void onFinish() {
             progressBar.setProgress(0);
-            getActivity().finishAffinity();
-            getActivity().overridePendingTransition(0, 0);
-
+            getActivity().finish();
         }
 
     }
