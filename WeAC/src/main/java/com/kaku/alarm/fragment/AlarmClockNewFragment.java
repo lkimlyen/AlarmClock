@@ -160,8 +160,8 @@ public class AlarmClockNewFragment extends BaseFragment implements OnClickListen
 
         timePicker.setIs24HourView(share.getBoolean(WeacConstants.IS_FORMAT_24, true));
 
-        int currentHour = share.getInt(WeacConstants.DEFAULT_ALARM_HOUR, timePicker.getCurrentHour());
-        int currentMinute = share.getInt(WeacConstants.DEFAULT_ALARM_MINUTE, timePicker.getCurrentMinute());
+        int currentHour = timePicker.getCurrentHour();
+        int currentMinute = timePicker.getCurrentMinute();
         int napInterval = share.getInt(WeacConstants.NAP_INTERVAL,
                 Integer.parseInt(getString(R.string.default_snooze_time).replace("minutes", "").trim()));
         txtSnoozeTime.setText(napInterval + " minutes");
