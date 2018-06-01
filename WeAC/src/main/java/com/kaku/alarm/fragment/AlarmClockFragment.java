@@ -98,7 +98,12 @@ public class AlarmClockFragment extends BaseFragment implements OnClickListener 
                         AlarmClock alarmClock = item;
                         Intent intent = new Intent(getActivity(),
                                 AlarmClockEditActivity.class);
-                        intent.putExtra(WeacConstants.ALARM_CLOCK, alarmClock);
+
+                        Bundle bundle = new Bundle();
+                        bundle.putParcelable(WeacConstants.ALARM_CLOCK, alarmClock);
+                        intent.putExtra("bundlene", bundle);
+
+
                         startActivityForResult(intent, REQUEST_ALARM_CLOCK_EDIT);
                         getActivity().overridePendingTransition(R.anim.move_in_bottom,
                                 0);
@@ -145,7 +150,11 @@ public class AlarmClockFragment extends BaseFragment implements OnClickListener 
                     @Override
                     public void onReviewClick() {
                         Intent it = new Intent(getContext(), AlarmClockOntimeActivity.class);
-                        it.putExtra(WeacConstants.ALARM_CLOCK, item);
+                        Bundle bundle = new Bundle();
+                        bundle.putParcelable(WeacConstants.ALARM_CLOCK, item);
+                        it.putExtra("bundlene", bundle);
+
+
                         getActivity().startActivity(it);
                     }
                 });
@@ -245,7 +254,7 @@ public class AlarmClockFragment extends BaseFragment implements OnClickListener 
             return;
         }
         AlarmClock ac = data
-                .getParcelableExtra(WeacConstants.ALARM_CLOCK);
+                .getBundleExtra("bundlene").getParcelable(WeacConstants.ALARM_CLOCK);
         switch (requestCode) {
             // 新建闹钟
             case REQUEST_ALARM_CLOCK_NEW:

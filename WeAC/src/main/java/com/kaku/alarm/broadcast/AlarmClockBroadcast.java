@@ -19,6 +19,7 @@ package com.kaku.alarm.broadcast;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.SystemClock;
 
 import com.kaku.alarm.activities.AlarmClockOntimeActivity;
@@ -45,7 +46,7 @@ public class AlarmClockBroadcast extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         AlarmClock alarmClock = intent
-                .getParcelableExtra(WeacConstants.ALARM_CLOCK);
+                .getBundleExtra("bundlene").getParcelable(WeacConstants.ALARM_CLOCK);
         if (alarmClock != null) {
             // 单次响铃
             if (alarmClock.getWeeks() == null) {
@@ -99,7 +100,11 @@ public class AlarmClockBroadcast extends BroadcastReceiver {
             // 小睡已执行次数
             it.putExtra(WeacConstants.NAP_RAN_TIMES, napTimesRan);
         }
-        it.putExtra(WeacConstants.ALARM_CLOCK, alarmClock);
+
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(WeacConstants.ALARM_CLOCK, alarmClock);
+        it.putExtra("bundlene", bundle);
+
         // 清除栈顶的Activity
         it.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                 | Intent.FLAG_ACTIVITY_CLEAR_TOP);

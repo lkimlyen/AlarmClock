@@ -55,9 +55,12 @@ public class TimerOnTimeActivity extends BaseActivitySimple implements View.OnCl
 
         mCurrentVolume = mAudioManager
                 .getStreamVolume(AudioManager.STREAM_MUSIC);
+
         // 设置铃声音量
+
         mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC,
-                6, AudioManager.ADJUST_SAME);
+                ((AudioManager)getSystemService(
+                        Context.AUDIO_SERVICE)).getStreamMaxVolume(AudioManager.STREAM_MUSIC), AudioManager.ADJUST_SAME);
 
         SharedPreferences shares = getSharedPreferences(
                 WeacConstants.EXTRA_WEAC_SHARE, Activity.MODE_PRIVATE);

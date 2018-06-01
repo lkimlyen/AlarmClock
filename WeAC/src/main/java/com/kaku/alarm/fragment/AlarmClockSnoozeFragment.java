@@ -2,6 +2,7 @@ package com.kaku.alarm.fragment;
 
 import android.app.Activity;
 import android.app.NotificationManager;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.kaku.alarm.R;
+import com.kaku.alarm.activities.SplashActivity;
 import com.kaku.alarm.common.WeacConstants;
 import com.kaku.alarm.common.WeacStatus;
 import com.kaku.alarm.util.LogUtil;
@@ -118,6 +120,14 @@ public class AlarmClockSnoozeFragment extends com.kaku.alarm.fragment.BaseFragme
         mySlidingView.setSlidingTipListener(new MySlidingView.SlidingTipListener() {
             @Override
             public void onSlidFinish() {
+                Intent i1 = new Intent(getActivity(), SplashActivity.class);
+                i1.setAction(Intent.ACTION_MAIN);
+                i1.addCategory(Intent.CATEGORY_HOME);
+                i1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                i1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                i1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(i1);
+
                 finishActivity();
             }
         });
@@ -151,11 +161,12 @@ public class AlarmClockSnoozeFragment extends com.kaku.alarm.fragment.BaseFragme
         MyUtil.cancelAlarmClock(getContext(),
                 clockId);
         MyUtil.cancelAlarmClock(getContext(),
-                clockId);
+                -clockId);
 
         NotificationManager notificationManager = (NotificationManager) getContext()
                 .getSystemService(Activity.NOTIFICATION_SERVICE);
         notificationManager.cancel(clockId);
+
         getActivity().finish();
     }
 

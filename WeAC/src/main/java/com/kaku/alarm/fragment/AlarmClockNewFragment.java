@@ -17,8 +17,10 @@
 package com.kaku.alarm.fragment;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -110,7 +112,10 @@ public class AlarmClockNewFragment extends BaseFragment implements OnClickListen
             @Override
             public void onClick(View view) {
                 Intent it = new Intent(getContext(), AlarmClockOntimeActivity.class);
-                it.putExtra(WeacConstants.ALARM_CLOCK, mAlarmClock);
+                Bundle bundle = new Bundle();
+                bundle.putParcelable(WeacConstants.ALARM_CLOCK, mAlarmClock);
+                it.putExtra("bundlene", bundle);
+
                 getActivity().startActivity(it);
             }
         });
@@ -128,7 +133,8 @@ public class AlarmClockNewFragment extends BaseFragment implements OnClickListen
     private void initVolume(View view) {
         final SharedPreferences share = getActivity().getSharedPreferences(WeacConstants.EXTRA_WEAC_SHARE,
                 Activity.MODE_PRIVATE);
-        final int volume = share.getInt(WeacConstants.AlARM_VOLUME, 8);
+        final int volume = share.getInt(WeacConstants.AlARM_VOLUME,  ((AudioManager) getActivity().getSystemService(
+                Context.AUDIO_SERVICE)).getStreamMaxVolume(AudioManager.STREAM_MUSIC));
         mAlarmClock.setVolume(volume);
 
     }
@@ -293,7 +299,11 @@ public class AlarmClockNewFragment extends BaseFragment implements OnClickListen
                 saveDefaultAlarmTime();
 
                 Intent data = new Intent();
-                data.putExtra(WeacConstants.ALARM_CLOCK, mAlarmClock);
+                Bundle bundle = new Bundle();
+                bundle.putParcelable(WeacConstants.ALARM_CLOCK, mAlarmClock);
+                data.putExtra("bundlene", bundle);
+
+
                 getActivity().setResult(Activity.RESULT_OK, data);
                 drawAnimation();
                 displayCountDown();
