@@ -89,7 +89,7 @@ public class RingSelectFragment extends BaseFragment implements OnClickListener 
         actionCancel.setOnClickListener(this);
 
         // 保存按钮
-        TextView actionSave = (TextView) view.findViewById(R.id.ring_select_save);
+        ImageView actionSave = (ImageView) view.findViewById(R.id.ring_select_save);
         actionSave.setOnClickListener(this);
 
         return view;

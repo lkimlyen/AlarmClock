@@ -3,13 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    android:background="@drawable/background">
 
     <com.kaku.alarm.view.MySlidingView
         android:id="@+id/my_sliding_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimary"
         android:orientation="vertical">
 
         <TextView
@@ -25,12 +24,19 @@
             android:textSize="80sp" />
 
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_clock"
+            />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:gravity="center"
+                android:visibility="gone"
                 android:orientation="vertical">
                 <Chronometer
                     android:id="@+id/chronometer"

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -86,7 +87,8 @@ public class AlarmClockSnoozeFragment extends com.kaku.alarm.fragment.BaseFragme
         progressBar = (ProgressBar) view.findViewById(R.id.recordProgressBar);
         mTimeTv.setText(new SimpleDateFormat("HH:mm", Locale.getDefault())
                 .format(new Date()));
-
+        Typeface type = Typeface.createFromAsset(getActivity().getAssets(), "fonts/transformers_movie.ttf");
+        mTimeTv.setTypeface(type);
         mRecordPromptCount = mNapInterval * 60 + 1000;
         mChronometer.setBase(SystemClock.elapsedRealtime());
         mChronometer.start();
@@ -108,6 +110,8 @@ public class AlarmClockSnoozeFragment extends com.kaku.alarm.fragment.BaseFragme
         myCountDownTimer = new MyCountDownTimer(mNapInterval * 60 * 1000, 1000);
         myCountDownTimer.start();
         TextView slidingTipIv = (TextView) view.findViewById(R.id.sliding_tip_tv);
+        Typeface type2 = Typeface.createFromAsset(getActivity().getAssets(), "fonts/kartika.ttf");
+        slidingTipIv.setTypeface(type2);
         final AnimationDrawable animationDrawable = (AnimationDrawable) slidingTipIv.getCompoundDrawables()[0];
         slidingTipIv.post(new Runnable() {
             @Override

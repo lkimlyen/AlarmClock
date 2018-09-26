@@ -4,6 +4,7 @@
     android:id="@+id/ring_select_llyt"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     android:orientation="vertical">
 
     <RelativeLayout style="@style/action_llyt">
@@ -19,30 +20,39 @@
             style="@style/action_title"
             android:text="@string/ring_select" />
 
-        <TextView
+        <ImageView
             android:id="@+id/ring_select_save"
-            style="@style/action_tv"
+            android:layout_width="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:text="@string/save" />
+            android:src="@drawable/ic_save"/>
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/gray_background_color"
         android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="65dp">
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_alignParentBottom="true"
+            android:background="#696969" />
         <android.support.design.widget.TabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="65dp"
             android:layout_below="@+id/layout"
-            android:background="@color/colorPrimary"
+            android:background="@color/transparent"
             app:tabGravity="fill"
-            app:tabIndicatorColor="@android:color/white"
+            app:tabIndicatorColor="@color/colorPrimary"
             app:tabIndicatorHeight="5dp"
             app:tabMode="fixed"
-            app:tabSelectedTextColor="@android:color/white"
+            app:tabSelectedTextColor="@color/colorPrimary"
             app:tabTextColor="@android:color/white">
 
             <android.support.design.widget.TabItem
@@ -60,7 +70,7 @@
 
         </android.support.design.widget.TabLayout>
 
-
+        </RelativeLayout>
         <android.support.v4.view.ViewPager
             android:id="@+id/fragment_ring_select_sort"
             android:layout_width="match_parent"

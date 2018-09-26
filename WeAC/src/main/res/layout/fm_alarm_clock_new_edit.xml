@@ -7,14 +7,14 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:focusable="true"
-    android:background="@color/white"
+    android:background="@drawable/background"
     android:focusableInTouchMode="true"
     android:orientation="vertical">
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="47dp"
         android:layout_weight="0"
-        android:background="@color/colorPrimary"
+        android:background="@color/transparent"
         android:orientation="horizontal"
         app:contentInsetEnd="0dp"
         app:contentInsetLeft="0dp"
@@ -37,7 +37,7 @@
                 android:gravity="center"
                 android:padding="10dp"
                 android:text="Cancel"
-                android:textColor="@android:color/white"
+                android:textColor="#e5e5e5"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -49,7 +49,7 @@
                 android:gravity="center"
                 android:text="Edit Alarm"
                 android:id="@+id/action_title"
-                android:textColor="@android:color/white"
+                android:textColor="#e5e5e5"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -65,13 +65,17 @@
                 android:text="Save"
 
                 android:padding="10dp"
-                android:textColor="@android:color/white"
+                android:textColor="#e5e5e5"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_alignParentBottom="true"
+        android:background="#696969" />
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -122,6 +126,7 @@
 
                         <TextView
                             style="@style/new_alarm_clcok_item_type"
+
                             android:text="@string/repeat"/>
 
                         <TextView
@@ -131,6 +136,8 @@
                             android:ellipsize="end"
                             android:maxWidth="230dp"
                             android:singleLine="true"
+                            android:textColor="#0279ff"
+                            android:textAllCaps="true"
                             android:text="@string/repeat_once"/>
                     </LinearLayout>
 
@@ -232,7 +239,8 @@
                             android:layout_gravity="center"
                             android:layout_marginLeft="19dp"
                             android:text="@string/tag"
-                            android:textColor="@color/black_text_normal_common"
+                            android:textAllCaps="true"
+                            android:textColor="@color/white"
                             android:textSize="16sp"/>
 
                         <EditText
@@ -249,7 +257,7 @@
                             android:selectAllOnFocus="true"
                             android:singleLine="true"
                             android:text="@string/alarm_clock"
-                            android:textColor="@color/darkgray"
+                            android:textColor="@color/white"
                             android:textSize="16sp"/>
                     </LinearLayout>
 
@@ -272,10 +280,12 @@
                             style="@style/new_alarm_clcok_item_describe"
                             android:layout_marginRight="6dp"
                             android:drawablePadding="5dp"
-                            android:drawableRight="@drawable/ic_more_arrow_dark"
+                            android:drawableRight="@drawable/ic_more_arrow_light"
                             android:ellipsize="end"
                             android:maxWidth="230dp"
                             android:singleLine="true"
+                            android:textAllCaps="true"
+                            android:textColor="#0279ff"
                             android:text="@string/default_ring"/>
                     </LinearLayout>
 
@@ -312,9 +322,10 @@
                             style="@style/new_alarm_clcok_item_describe"
                             android:layout_marginRight="6dp"
                             android:drawablePadding="5dp"
-                            android:drawableRight="@drawable/ic_more_arrow_dark"
+                            android:drawableRight="@drawable/ic_more_arrow_light"
                             android:ellipsize="end"
                             android:maxWidth="230dp"
+                            android:textColor="#0279ff"
                             android:singleLine="true"
                             android:text="@string/default_snooze_time"/>
                     </LinearLayout>
@@ -332,8 +343,7 @@
                             style="@style/new_alarm_clcok_item_type"
                             android:layout_marginLeft="6dp"
                             android:text="@string/text_preview_alarm"
-
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="@color/white"
                             android:textAllCaps="true"
                             android:gravity="center"
                             android:textStyle="bold"/>

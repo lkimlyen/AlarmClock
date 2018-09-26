@@ -32,12 +32,8 @@ public class CustomDialogSetting extends DialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        Dialog dialog = new Dialog(getActivity());
-        dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        dialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN
-                , WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        Dialog dialog = new Dialog(getActivity(), android.R.style.Theme_Translucent_NoTitleBar);
         dialog.setContentView(R.layout.dialog_setting);
-        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
 
         dialog.findViewById(R.id.tv_edit).setOnClickListener(new View.OnClickListener() {
             @Override

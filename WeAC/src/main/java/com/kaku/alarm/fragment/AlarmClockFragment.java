@@ -36,6 +36,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.animation.OvershootInterpolator;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -173,7 +174,7 @@ public class AlarmClockFragment extends BaseFragment implements OnClickListener 
         mRecyclerView.getItemAnimator().setChangeDuration(300);
         mRecyclerView.setAdapter(mAdapter);
 
-        FloatingActionButton fabAdd = (FloatingActionButton) view.findViewById(R.id.fab_add);
+        Button fabAdd = (Button) view.findViewById(R.id.btn_add);
         fabAdd.setOnClickListener(this);
 
         updateList();
@@ -184,7 +185,7 @@ public class AlarmClockFragment extends BaseFragment implements OnClickListener 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.fab_add:
+            case R.id.btn_add:
 
                 Intent intent = new Intent(getActivity(),
                         AlarmClockNewActivity.class);

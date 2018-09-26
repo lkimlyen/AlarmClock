@@ -25,7 +25,8 @@
         <item name="android:layout_gravity">center</item>
         <item name="android:layout_marginLeft">19dp</item>
         <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/black_text_normal_common</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAllCaps">true</item>
     </style>
 
     <style name="new_alarm_clcok_item_describe">
@@ -37,10 +38,9 @@
     </style>
 
     <style name="new_alarm_clcok_item_toggle_btn">
-        <item name="android:layout_width">51dp</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">center</item>
-        <item name="android:layout_marginRight">18dp</item>
         <item name="android:background">@android:color/transparent</item>
         <item name="android:button">@drawable/toggle_btn_alarm_on_off</item>
         <item name="android:checked">true</item>
@@ -54,7 +54,7 @@
         <item name="android:background">@drawable/toggle_btn_repeat_week</item>
         <item name="android:checked">false</item>
         <item name="android:textSize">12sp</item>
-        <item name="android:textColor">@drawable/text_color_toggle_btn_circle</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="new_alarm_clock_repeat_days_llyt">
@@ -104,10 +104,10 @@
 
     <style name="dialog_llyt">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginLeft">25dp</item>
         <item name="android:layout_marginRight">25dp</item>
-        <item name="android:background">@drawable/shape_circle_dialog</item>
+        <item name="android:background">@drawable/bg_dialog</item>
         <item name="android:orientation">vertical</item>
     </style>
 

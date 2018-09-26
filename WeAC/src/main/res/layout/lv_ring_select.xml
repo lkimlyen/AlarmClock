@@ -12,7 +12,7 @@
         android:layout_marginLeft="15dp"
         android:ellipsize="end"
         android:singleLine="true"
-        android:textColor="@color/black_text_normal_common"
+        android:textColor="@color/white"
         android:textSize="18sp" />
 
     <ImageView

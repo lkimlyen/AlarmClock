@@ -2,8 +2,8 @@ apply plugin: 'com.android.application'
 apply plugin: 'tinyPIC'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    compileSdkVersion 26
+    buildToolsVersion "26.0.2"
 
     defaultConfig {
         applicationId "com.yen.alarm.demo"
