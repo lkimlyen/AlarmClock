@@ -25,6 +25,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.AudioManager;
 import android.os.Build;
@@ -167,6 +168,8 @@ public class AlarmClockOntimeFragment extends BaseFragment implements
         View view = inflater.inflate(R.layout.fm_alarm_clock_ontime, container,
                 false);
         mTimeTv = (TextView) view.findViewById(R.id.ontime_time);
+        Typeface type = Typeface.createFromAsset(getActivity().getAssets(), "fonts/transformers_movie.ttf");
+        mTimeTv.setTypeface(type);
         rippleBackground = (RippleBackground) view.findViewById(R.id.content);
         ivAlarm = view.findViewById(R.id.iv_clock);
         mTimeTv.setText(new SimpleDateFormat("HH:mm", Locale.getDefault())
