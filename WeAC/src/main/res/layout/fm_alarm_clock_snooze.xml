@@ -29,37 +29,37 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:src="@drawable/ic_clock"
-            />
+            android:visibility="gone" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Chronometer
+                android:id="@+id/chronometer"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:gravity="center"
-                android:visibility="gone"
-                android:orientation="vertical">
-                <Chronometer
-                    android:id="@+id/chronometer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:layout_centerInParent="true"
-                    android:text="00:00"
-                    android:textColor="#fff"
-                    android:textSize="60sp" />
+                android:fontFamily="sans-serif-light"
+                android:text="00:00"
+                android:textColor="#fff"
+                android:textSize="60sp" />
 
-                <ProgressBar
-                    android:id="@+id/recordProgressBar"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:layout_centerInParent="true"
-                    android:layout_marginTop="27dp"
-                    android:background="@drawable/record_progress_bar"
-                    android:indeterminate="false"
-                    android:max="100"
-                    android:progress="0"
-                    android:progressDrawable="@drawable/record_progress_bar_background" />
+            <ProgressBar
+                android:id="@+id/recordProgressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="27dp"
+                android:background="@drawable/record_progress_bar"
+                android:indeterminate="false"
+                android:max="100"
+                android:progress="0"
+                android:progressDrawable="@drawable/record_progress_bar_background" />
         </RelativeLayout>
 
         <TextView

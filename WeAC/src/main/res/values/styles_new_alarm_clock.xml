@@ -51,6 +51,7 @@
     <style name="new_alarm_clcok_repeat_days_tog_btn">
         <item name="android:layout_width">38dp</item>
         <item name="android:layout_height">38dp</item>
+        <item name="android:textAllCaps">false</item>
         <item name="android:background">@drawable/toggle_btn_repeat_week</item>
         <item name="android:checked">false</item>
         <item name="android:textSize">12sp</item>

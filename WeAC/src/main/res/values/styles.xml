@@ -23,10 +23,10 @@
         <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <!-- 设置dialog的背景 -->
-         <!--<item name="android:windowNoTitle">true</item>-->
+        <!--<item name="android:windowNoTitle">true</item>-->
         <!-- 设置title -->
         <!--<item name="windowActionBar">false</item>-->
-         <!--<item name="android:windowFrame">@null</item>-->
+        <!--<item name="android:windowFrame">@null</item>-->
         <!-- 设置边框 -->
         <!-- <item name="android:windowIsTranslucent">true</item> -->
         <!-- 设置半透明 -->
@@ -46,7 +46,7 @@
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:gravity">center</item>
-<!--        <item name="android:background">@drawable/bg_tab_touch</item>-->
+        <!--        <item name="android:background">@drawable/bg_tab_touch</item>-->
         <item name="android:layout_weight">1</item>
         <item name="android:orientation">vertical</item>
     </style>
@@ -141,5 +141,8 @@
         <item name="android:background">@drawable/bg_btn_sure</item>
     </style>
 
-
+    <style name="MyTimePickerWidgetStyle" parent="@android:style/Widget.Material.Light.TimePicker">
+        <item name="android:colorControlNormal">#0279ff</item>
+        <item name="android:textColorPrimary">#ffffff</item>
+    </style>
 </resources>

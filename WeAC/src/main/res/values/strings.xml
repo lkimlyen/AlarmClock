@@ -28,13 +28,13 @@
     <string name="countdown_day_hour_minute" formatted="false">Alarm set for %1$d %2$s %3$d %4$s %5$d %6$s from now</string>
     <string name="countdown_hour_minute" formatted="false">Alarm set for %1$d %2$s %3$d %4$s from now</string>
     <string name="countdown_minute" formatted="false">Alarm set for %1$d %2$s from now</string>
-    <string name="monday">M</string>
-    <string name="tuesday">T</string>
-    <string name="wednesday">W</string>
-    <string name="thursday">Th</string>
-    <string name="friday">F</string>
-    <string name="saturday">Sa</string>
-    <string name="sunday">S</string>
+    <string name="monday">mon</string>
+    <string name="tuesday">tue</string>
+    <string name="wednesday">wed</string>
+    <string name="thursday">thu</string>
+    <string name="friday">fri</string>
+    <string name="saturday">sat</string>
+    <string name="sunday">sun</string>
     <string name="repeat_once">Only one</string>
     <string name="one_h">Monday</string>
     <string name="two_h">Tuesday</string>

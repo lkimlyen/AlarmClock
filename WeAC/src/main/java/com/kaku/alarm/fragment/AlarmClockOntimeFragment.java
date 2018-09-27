@@ -40,6 +40,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.kaku.alarm.R;
@@ -77,7 +82,7 @@ public class AlarmClockOntimeFragment extends BaseFragment implements
     private int mNapInterval;
     private int mNapTimes;
     private boolean mIsOnclick = false;
-
+    private ImageView ivAlarm;
     private int mNapTimesRan;
 
     private AudioManager mAudioManager;
@@ -163,11 +168,12 @@ public class AlarmClockOntimeFragment extends BaseFragment implements
                 false);
         mTimeTv = (TextView) view.findViewById(R.id.ontime_time);
         rippleBackground = (RippleBackground) view.findViewById(R.id.content);
+        ivAlarm = view.findViewById(R.id.iv_clock);
         mTimeTv.setText(new SimpleDateFormat("HH:mm", Locale.getDefault())
                 .format(new Date()));
         mCurrentTimeDisplay = mTimeTv.getText().toString();
         new Thread(new TimeUpdateThread()).start();
-        TextView napTv = (TextView) view.findViewById(R.id.ontime_nap);
+        RelativeLayout napTv =  view.findViewById(R.id.layout_nap);
 
         if (mAlarmClock != null && mAlarmClock.isNap()) {
             if (mNapTimesRan != mNapTimes) {
@@ -175,6 +181,10 @@ public class AlarmClockOntimeFragment extends BaseFragment implements
 
             }
         }
+
+        final Animation animShake = AnimationUtils.loadAnimation(getContext(), R.anim.shake);
+        animShake.setRepeatMode(Animation.INFINITE);
+        ivAlarm.startAnimation(animShake);
 
         TextView slidingTipIv = (TextView) view.findViewById(R.id.sliding_tip_tv);
         final AnimationDrawable animationDrawable = (AnimationDrawable) slidingTipIv.getCompoundDrawables()[0];

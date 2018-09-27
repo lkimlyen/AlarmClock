@@ -76,7 +76,7 @@ public class AlarmClockAdapter extends RecyclerView.Adapter<AlarmClockAdapter.My
         mContext = context;
         mList = objects;
         mWhite = mContext.getResources().getColor(R.color.colorPrimary);
-        mWhiteTrans = mContext.getResources().getColor(android.R.color.darker_gray);
+        mWhiteTrans = mContext.getResources().getColor(android.R.color.white);
         this.mOnItemClickListener = mOnItemClickListener;
     }
 
@@ -107,11 +107,9 @@ public class AlarmClockAdapter extends RecyclerView.Adapter<AlarmClockAdapter.My
         if (alarmClock.isOnOff()) {
             viewHolder.time.setTextColor(mWhite);
             viewHolder.repeat.setTextColor(mWhite);
-            viewHolder.tag.setTextColor(mWhite);
         } else {
             viewHolder.time.setTextColor(mWhiteTrans);
             viewHolder.repeat.setTextColor(mWhiteTrans);
-            viewHolder.tag.setTextColor(mWhiteTrans);
 
         }
 
@@ -120,124 +118,114 @@ public class AlarmClockAdapter extends RecyclerView.Adapter<AlarmClockAdapter.My
         viewHolder.time.setText(time);
         String[] parts = alarmClock.getRepeat().split(mContext.getString(R.string.caesura));
         String part1 = parts[0];
-
-        viewHolder.llDate.setVisibility(View.GONE);
-        viewHolder.repeat.setVisibility(View.VISIBLE);
         if (part1.equals(mContext.getString(R.string.week))) {
-            if (parts.length == 2) {
-
-                viewHolder.repeat.setText(parts[1]);
-            } else {
-                viewHolder.repeat.setVisibility(View.GONE);
-                viewHolder.llDate.setVisibility(View.VISIBLE);
-                boolean isMonday = false, isTuesday = false, isWed = false, isThur = false, isFri = false, isSat = false, isSun = false;
-                for (int i = 1; i < parts.length; i++) {
-                    if (parts[i].equals(mContext.getString(R.string.one_h))) {
-                        isMonday = true;
-                    }
-                    if (parts[i].equals(mContext.getString(R.string.two_h))) {
-                       isTuesday = true;
-                    }
-                    if (parts[i].equals(mContext.getString(R.string.three_h))) {
-                       isWed = true;
-                    }
-                    if (parts[i].equals(mContext.getString(R.string.four_h))) {
-                        isThur = true;
-                    }
-                    if (parts[i].equals(mContext.getString(R.string.five_h))) {
-                        isFri = true;
-                    }
-                    if (parts[i].equals(mContext.getString(R.string.six_h))) {
-                        isSat = true;
-                    }
-
-                    if (parts[i].equals(mContext.getString(R.string.day))) {
-                      isSun = true;
-                    }
+            viewHolder.llDate.setVisibility(View.VISIBLE);
+            viewHolder.repeat.setVisibility(View.GONE);
+            boolean isMonday = false, isTuesday = false, isWed = false, isThur = false, isFri = false, isSat = false, isSun = false;
+            for (int i = 1; i < parts.length; i++) {
+                if (parts[i].equals(mContext.getString(R.string.one_h))) {
+                    isMonday = true;
                 }
-                if (isMonday){
-                    viewHolder.llMonday.setVisibility(View.VISIBLE);
-                }else {
-                    viewHolder.llMonday.setVisibility(View.GONE);
+                if (parts[i].equals(mContext.getString(R.string.two_h))) {
+                    isTuesday = true;
+                }
+                if (parts[i].equals(mContext.getString(R.string.three_h))) {
+                    isWed = true;
+                }
+                if (parts[i].equals(mContext.getString(R.string.four_h))) {
+                    isThur = true;
+                }
+                if (parts[i].equals(mContext.getString(R.string.five_h))) {
+                    isFri = true;
+                }
+                if (parts[i].equals(mContext.getString(R.string.six_h))) {
+                    isSat = true;
                 }
 
-                if (isTuesday){
-                    viewHolder.llTuesday.setVisibility(View.VISIBLE);
-                }else {
-                    viewHolder.llTuesday.setVisibility(View.GONE);
-                }
-                if (isWed){
-                    viewHolder.llWed.setVisibility(View.VISIBLE);
-                }else {
-                    viewHolder.llWed.setVisibility(View.GONE);
-                }
-                if (isThur){
-                    viewHolder.llThurs.setVisibility(View.VISIBLE);
-                }else {
-                    viewHolder.llThurs.setVisibility(View.GONE);
-                }
-                if (isFri){
-                    viewHolder.llFri.setVisibility(View.VISIBLE);
-                }else {
-                    viewHolder.llFri.setVisibility(View.GONE);
-                }
-                if (isSat){
-                    viewHolder.llSatu.setVisibility(View.VISIBLE);
-                }else {
-                    viewHolder.llSatu.setVisibility(View.GONE);
-                }
-                if (isSun){
-                    viewHolder.llSun.setVisibility(View.VISIBLE);
-                }else {
-                    viewHolder.llSun.setVisibility(View.GONE);
+                if (parts[i].equals(mContext.getString(R.string.day))) {
+                    isSun = true;
                 }
             }
-        } else {
-            viewHolder.repeat.setText(alarmClock.getRepeat());
+            if (isMonday) {
+                viewHolder.tvMonday.setBackgroundResource(R.drawable.shape_circle_week_on_pressed);
+            } else {
+                viewHolder.tvMonday.setBackgroundResource(R.drawable.shape_circle_week_off_normal);
+            }
 
+            if (isTuesday) {
+                viewHolder.tvTuesday.setBackgroundResource(R.drawable.shape_circle_week_on_pressed);
+            } else {
+                viewHolder.tvTuesday.setBackgroundResource(R.drawable.shape_circle_week_off_normal);
+            }
+            if (isWed) {
+                viewHolder.tvWed.setBackgroundResource(R.drawable.shape_circle_week_on_pressed);
+            } else {
+                viewHolder.tvWed.setBackgroundResource(R.drawable.shape_circle_week_off_normal);
+            }
+            if (isThur) {
+                viewHolder.tvThurs.setBackgroundResource(R.drawable.shape_circle_week_on_pressed);
+            } else {
+                viewHolder.tvThurs.setBackgroundResource(R.drawable.shape_circle_week_off_normal);
+            }
+            if (isFri) {
+                viewHolder.tvFri.setBackgroundResource(R.drawable.shape_circle_week_on_pressed);
+            } else {
+                viewHolder.tvFri.setBackgroundResource(R.drawable.shape_circle_week_off_normal);
+            }
+            if (isSat) {
+                viewHolder.tvSatu.setBackgroundResource(R.drawable.shape_circle_week_on_pressed);
+            } else {
+                viewHolder.tvSatu.setBackgroundResource(R.drawable.shape_circle_week_off_normal);
+            }
+            if (isSun) {
+                viewHolder.tvSun.setBackgroundResource(R.drawable.shape_circle_week_on_pressed);
+            } else {
+                viewHolder.tvSun.setBackgroundResource(R.drawable.shape_circle_week_off_normal);
+            }
+        } else {
+            viewHolder.llDate.setVisibility(View.GONE);
+            viewHolder.repeat.setVisibility(View.VISIBLE);
+            viewHolder.repeat.setText(alarmClock.getRepeat());
         }
         viewHolder.tag.setText(alarmClock.getTag());
-        viewHolder.toggleBtn
-                .setOnCheckedChangeListener(new OnCheckedChangeListener() {
+        viewHolder.toggleBtn.setOnClickListener(new OnClickListener() {
+                                                    @Override
+                                                    public void onClick(View v) {
+                                                        if (!alarmClock.isOnOff()) {
+                                                            updateTab(true);
 
-                    @Override
-                    public void onCheckedChanged(CompoundButton buttonView,
-                                                 boolean isChecked) {
+                                                        } else {
+                                                            updateTab(false);
+                                                            MyUtil.cancelAlarmClock(mContext,
+                                                                    alarmClock.getId());
+                                                            MyUtil.cancelAlarmClock(mContext,
+                                                                    -alarmClock.getId());
 
-                        if (isChecked) {
-                            if (!alarmClock.isOnOff()) {
-                                updateTab(true);
-                            }
-                        } else {
-                            if (!alarmClock.isOnOff()) {
-                                return;
-                            }
-                            updateTab(false);
-                            MyUtil.cancelAlarmClock(mContext,
-                                    alarmClock.getId());
-                            MyUtil.cancelAlarmClock(mContext,
-                                    -alarmClock.getId());
+                                                            NotificationManager notificationManager = (NotificationManager) mContext.
+                                                                    getSystemService(
+                                                                            Activity.NOTIFICATION_SERVICE);
+                                                            // 取消下拉列表通知消息
+                                                            notificationManager.cancel(alarmClock.getId());
 
-                            NotificationManager notificationManager = (NotificationManager) mContext.
-                                    getSystemService(
-                                            Activity.NOTIFICATION_SERVICE);
-                            // 取消下拉列表通知消息
-                            notificationManager.cancel(alarmClock.getId());
-
-                            // 停止播放
-                            AudioPlayer.getInstance(mContext).stop();
-                        }
-
-                    }
+                                                            // 停止播放
+                                                            AudioPlayer.getInstance(mContext).stop();
+                                                        }
 
 
-                    private void updateTab(boolean onOff) {
-                        AlarmClockOperate.getInstance().updateAlarmClock(onOff,
-                                alarmClock.getId());
-                        OttoAppConfig.getInstance().post(new AlarmClockUpdateEvent());
-                    }
-                });
-        viewHolder.toggleBtn.setChecked(alarmClock.isOnOff());
+                                                    }
+
+                                                    private void updateTab(boolean onOff) {
+                                                        viewHolder.toggleBtn.setImageResource(onOff ? R.drawable.btn_on : R.drawable.btn_off);
+                                                        AlarmClockOperate.getInstance().updateAlarmClock(onOff,
+                                                                alarmClock.getId());
+                                                        OttoAppConfig.getInstance().post(new AlarmClockUpdateEvent());
+                                                    }
+                                                }
+
+        );
+
+
+        viewHolder.toggleBtn.setImageResource(alarmClock.isOnOff() ? R.drawable.btn_on : R.drawable.btn_off);
     }
 
     @Override
@@ -257,13 +245,11 @@ public class AlarmClockAdapter extends RecyclerView.Adapter<AlarmClockAdapter.My
         // 标签
         TextView tag;
         // 开关
-        ToggleButton toggleBtn;
-        // 删除
-        ImageView deleteBtn;
+        ImageView toggleBtn;
 
         ImageView imgSetting;
-
-        LinearLayout llDate, llMonday, llTuesday, llWed, llThurs, llFri, llSatu, llSun;
+        LinearLayout llDate;
+        TextView tvMonday, tvTuesday, tvWed, tvThurs, tvFri, tvSatu, tvSun;
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -271,17 +257,16 @@ public class AlarmClockAdapter extends RecyclerView.Adapter<AlarmClockAdapter.My
             time = (TextView) itemView.findViewById(R.id.tv_time);
             repeat = (TextView) itemView.findViewById(R.id.tv_repeat);
             tag = (TextView) itemView.findViewById(R.id.tv_tag);
-            toggleBtn = (ToggleButton) itemView.findViewById(R.id.toggle_btn);
-            deleteBtn = (ImageView) itemView.findViewById(R.id.alarm_list_delete_btn);
+            toggleBtn = itemView.findViewById(R.id.toggle_btn);
             imgSetting = (ImageView) itemView.findViewById(R.id.img_setting);
-            llDate = (LinearLayout) itemView.findViewById(R.id.ll_date);
-            llMonday = (LinearLayout) itemView.findViewById(R.id.ll_monday);
-            llTuesday = (LinearLayout) itemView.findViewById(R.id.ll_tuesday);
-            llWed = (LinearLayout) itemView.findViewById(R.id.ll_wednesday);
-            llThurs = (LinearLayout) itemView.findViewById(R.id.ll_thursday);
-            llFri = (LinearLayout) itemView.findViewById(R.id.ll_friday);
-            llSatu = (LinearLayout) itemView.findViewById(R.id.ll_saturday);
-            llSun = (LinearLayout) itemView.findViewById(R.id.ll_sunday);
+            tvMonday = (TextView) itemView.findViewById(R.id.tv_monday);
+            tvTuesday = (TextView) itemView.findViewById(R.id.tv_tuesday);
+            tvWed = (TextView) itemView.findViewById(R.id.tv_wednesday);
+            tvThurs = (TextView) itemView.findViewById(R.id.tv_thursday);
+            tvFri = (TextView) itemView.findViewById(R.id.tv_friday);
+            tvSatu = (TextView) itemView.findViewById(R.id.tv_saturday);
+            tvSun = (TextView) itemView.findViewById(R.id.tv_sunday);
+            llDate = itemView.findViewById(R.id.ll_date);
         }
     }
 
@@ -297,4 +282,5 @@ public class AlarmClockAdapter extends RecyclerView.Adapter<AlarmClockAdapter.My
     public interface OnItemClickListener {
         void onItemClick(View view, int position, AlarmClock item);
     }
+
 }

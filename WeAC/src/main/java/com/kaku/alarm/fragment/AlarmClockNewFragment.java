@@ -163,7 +163,6 @@ public class AlarmClockNewFragment extends BaseFragment implements OnClickListen
 
         TimePicker timePicker = (TimePicker) view.findViewById(R.id.time_picker);
 
-
         timePicker.setIs24HourView(share.getBoolean(WeacConstants.IS_FORMAT_24, true));
 
         int currentHour = timePicker.getCurrentHour();

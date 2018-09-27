@@ -17,14 +17,13 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <com.makeramen.roundedimageview.RoundedImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_logo"
-                app:riv_corner_radius="15dip">
+                android:src="@drawable/alram_logo">
 
-            </com.makeramen.roundedimageview.RoundedImageView>
+            </ImageView>
 
         </LinearLayout>
     </RelativeLayout>

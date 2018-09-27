@@ -4,78 +4,99 @@
     android:id="@+id/ripple_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="5dp"
-    app:mrl_rippleColor="@color/white">
-
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="30dp">
+    android:layout_marginBottom="16dp"
+    app:mrl_rippleColor="@color/transparent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/shape_circle_alarm_list_item_normal"
+            android:background="@drawable/background_item"
             android:orientation="horizontal"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="8dp"
+            android:paddingLeft="24dp"
+            android:paddingBottom="5dp"
             android:weightSum="1">
-
-            <ImageView
-                android:id="@+id/alarm_list_delete_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:contentDescription="@null"
-                android:paddingLeft="10dp"
-                android:src="@drawable/ic_delete_btn"
-                android:visibility="gone" />
 
             <LinearLayout
                 android:id="@+id/llyt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="18dp"
-                android:layout_marginTop="5dp"
                 android:layout_weight="1"
-                android:alpha="0.9"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tv_time"
-                    android:layout_width="match_parent"
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="09:30"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="42sp" />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="09:30"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="35sp" />
+
+                    <TextView
+                        android:id="@+id/tv_tag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:singleLine="true"
+                        android:text="@string/alarm_clock"
+                        android:textColor="@android:color/white"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
 
                 <TextView
                     android:id="@+id/tv_repeat"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="30dp"
                     android:text="monday"
+                    android:textAllCaps="true"
+                    android:gravity="center_vertical"
                     android:textColor="@android:color/black"
-                    android:textSize="12sp" />
+                    android:textSize="16sp"
+                    android:visibility="gone" />
 
                 <LinearLayout
                     android:id="@+id/ll_date"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:orientation="horizontal">
+                    <LinearLayout
 
+                        android:id="@+id/ll_sunday"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp">
+
+                        <TextView
+                            android:id="@+id/tv_sunday"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:background="@drawable/shape_circle_week_off_normal"
+                            android:gravity="center"
+                            android:text="@string/sunday"
+                            android:textColor="@color/white"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
                     <LinearLayout
                         android:id="@+id/ll_monday"
                         android:layout_width="30dp"
                         android:layout_height="30dp">
 
                         <TextView
-                            android:id="@+id/tog_btn_monday"
+                            android:id="@+id/tv_monday"
                             android:layout_width="25dp"
                             android:layout_height="25dp"
-                            android:background="@drawable/bg_textview_monday"
+                            android:background="@drawable/shape_circle_week_off_normal"
                             android:gravity="center"
                             android:text="@string/monday"
                             android:textColor="@color/white"
-
                             android:textSize="10sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -86,10 +107,10 @@
                         android:layout_height="30dp">
 
                         <TextView
-                            android:id="@+id/tog_btn_tuesday"
+                            android:id="@+id/tv_tuesday"
                             android:layout_width="25dp"
                             android:layout_height="25dp"
-                            android:background="@drawable/bg_textview_tuesday"
+                            android:background="@drawable/shape_circle_week_off_normal"
                             android:gravity="center"
                             android:text="@string/tuesday"
                             android:textColor="@color/white"
@@ -104,13 +125,13 @@
                         android:layout_height="30dp">
 
                         <TextView
+                            android:id="@+id/tv_wednesday"
                             android:layout_width="25dp"
                             android:layout_height="25dp"
-                            android:background="@drawable/bg_textview_wednesday"
+                            android:background="@drawable/shape_circle_week_off_normal"
                             android:gravity="center"
                             android:text="@string/wednesday"
                             android:textColor="@color/white"
-
                             android:textSize="10sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -123,13 +144,13 @@
 
 
                         <TextView
+                            android:id="@+id/tv_thursday"
                             android:layout_width="25dp"
                             android:layout_height="25dp"
-                            android:background="@drawable/bg_textview_thursday"
+                            android:background="@drawable/shape_circle_week_off_normal"
                             android:gravity="center"
                             android:text="@string/thursday"
                             android:textColor="@color/white"
-
                             android:textSize="10sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -141,13 +162,13 @@
                         android:layout_height="30dp">
 
                         <TextView
+                            android:id="@+id/tv_friday"
                             android:layout_width="25dp"
                             android:layout_height="25dp"
-                            android:background="@drawable/bg_textview_friday"
+                            android:background="@drawable/shape_circle_week_off_normal"
                             android:gravity="center"
                             android:text="@string/friday"
                             android:textColor="@color/white"
-
                             android:textSize="10sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -159,72 +180,44 @@
                         android:layout_height="30dp">
 
                         <TextView
+                            android:id="@+id/tv_saturday"
                             android:layout_width="25dp"
                             android:layout_height="25dp"
-                            android:background="@drawable/bg_textview_saturday"
+                            android:background="@drawable/shape_circle_week_off_normal"
                             android:gravity="center"
                             android:text="@string/saturday"
                             android:textColor="@color/white"
-
                             android:textSize="10sp"
                             android:textStyle="bold" />
                     </LinearLayout>
 
-                    <LinearLayout
 
-                        android:id="@+id/ll_sunday"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp">
-
-                        <TextView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:background="@drawable/bg_textview_sunday"
-                            android:gravity="center"
-                            android:text="@string/sunday"
-                            android:textColor="@color/white"
-                            android:textSize="10sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tv_tag"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="15dp"
-                    android:singleLine="true"
-                    android:text="@string/alarm_clock"
-                    android:textColor="@android:color/black"
-                    android:textSize="14sp"
-                    android:visibility="gone" />
+
             </LinearLayout>
 
-            <ToggleButton
-                android:id="@+id/toggle_btn"
-                android:layout_width="51dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginRight="5dp"
-                android:layout_weight="0"
-                android:background="@android:color/transparent"
-                android:button="@drawable/toggle_btn_alarm_on_off_trans"
-                android:checked="false"
-                android:focusable="false"
-                android:textOff=""
-                android:textOn="" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_marginRight="8dp"
+                android:layout_weight="0">
 
-            <ImageView
+                <ImageView
+                    android:id="@+id/toggle_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:src="@drawable/btn_off"/>
 
-                android:id="@+id/img_setting"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:layout_weight="0"
-                android:padding="10dp"
-                android:src="@drawable/ic_menu" />
+                <ImageView
 
+                    android:id="@+id/img_setting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_menu" />
+            </LinearLayout>
         </LinearLayout>
-    </android.support.v7.widget.CardView>
 
 </com.balysv.materialripple.MaterialRippleLayout>

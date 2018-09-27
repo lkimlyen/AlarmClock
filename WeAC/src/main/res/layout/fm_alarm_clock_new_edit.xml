@@ -115,6 +115,8 @@
                         android:layout_gravity="center"
                         android:timePickerMode="spinner"
                         android:layout_marginBottom="2dp"
+                        android:theme="@style/MyTimePickerWidgetStyle"
+                        style="@style/MyTimePickerWidgetStyle"
                         android:layout_marginTop="2dp"/>
                 </LinearLayout>
 
@@ -147,7 +149,16 @@
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="5dp"
                         android:orientation="horizontal">
+                        <LinearLayout
+                            style="@style/new_alarm_clock_repeat_days_llyt">
 
+                            <ToggleButton
+                                android:id="@+id/tog_btn_sunday"
+                                style="@style/new_alarm_clcok_repeat_days_tog_btn"
+                                android:textOff="@string/sunday"
+                                android:textOn="@string/sunday">
+                            </ToggleButton>
+                        </LinearLayout>
                         <LinearLayout
                             style="@style/new_alarm_clock_repeat_days_llyt">
 
@@ -214,16 +225,7 @@
                             </ToggleButton>
                         </LinearLayout>
 
-                        <LinearLayout
-                            style="@style/new_alarm_clock_repeat_days_llyt">
 
-                            <ToggleButton
-                                android:id="@+id/tog_btn_sunday"
-                                style="@style/new_alarm_clcok_repeat_days_tog_btn"
-                                android:textOff="@string/sunday"
-                                android:textOn="@string/sunday">
-                            </ToggleButton>
-                        </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
 
@@ -344,6 +346,7 @@
                             android:layout_marginLeft="6dp"
                             android:text="@string/text_preview_alarm"
                             android:textColor="@color/white"
+                            android:padding="8dp"
                             android:textAllCaps="true"
                             android:gravity="center"
                             android:textStyle="bold"/>
